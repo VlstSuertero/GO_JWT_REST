@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	routes "go-course/routes"
 	"os"
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
