@@ -24,8 +24,17 @@ var validate = validator.New()
 
 func HashPassword()
 
-func VerifyPassword(password string) (bool, string) {
-	return true, "msg"
+func VerifyPassword(userPassword string, providedPassword string) (bool, string) {
+	err := bcrypt.CompareHashAndPassword([]byte(providedPassword), []byte(userPassword))
+	check := true
+	msg := ""
+
+	if err != nil {
+		msg = fmt.Sprintf("email of password is correct")
+		check = false
+	}
+
+	return check, msg
 }
 
 func Signup() gin.HandlerFunc {
